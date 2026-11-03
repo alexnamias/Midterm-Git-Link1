@@ -81,16 +81,18 @@ public class PlayerScript : MonoBehaviour
         //The code below controls the character's movement
         //First we make a variable that we'll use to record how we want to move
         Vector2 vel = new Vector2(RB.linearVelocity.x, RB.linearVelocity.y);
+
+        //vel.x = 0;
         
         //Then we use if statement to figure out what that variable should look like
         
         //If I hold the right arrow key, the player should move right. . .
-        if (Keyboard.current.rightArrowKey.isPressed)
+        if (Keyboard.current.dKey.isPressed)
         {
             vel.x = Speed;
         }
         //If I hold the left arrow, the player should move left. . .
-        if (Keyboard.current.leftArrowKey.isPressed)
+        if (Keyboard.current.aKey.isPressed)
         {
             vel.x = -Speed;
         }
@@ -102,7 +104,7 @@ public class PlayerScript : MonoBehaviour
         }
        */
         //If I hold the down arrow, the player should move down. . .
-        if (Keyboard.current.downArrowKey.isPressed)
+        if (Keyboard.current.sKey.isPressed)
         {
             vel.y = -Speed;
         }
@@ -110,7 +112,7 @@ public class PlayerScript : MonoBehaviour
         //Finally, I take that variable and I feed it to the component in charge of movement
         RB.linearVelocity = vel;
 
-        if (Keyboard.current.upArrowKey.wasPressedThisFrame && IsGround == true)
+        if (Keyboard.current.wKey.wasPressedThisFrame && IsGround == true)
         {
             PlayerSoundController.SoundJump();
             RB.linearVelocity = new Vector2(RB.linearVelocity.x, JumpForce);
